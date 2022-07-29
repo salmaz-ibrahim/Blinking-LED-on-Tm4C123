@@ -1,0 +1,711 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.37.0.0
+Copyright (C) 2022 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: S I, NA, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.37.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.18
+Assembler:       Armasm.exe V6.18
+Linker/Locator:  ArmLink.exe V6.18
+Library Manager: ArmAr.exe V6.18
+Hex Converter:   FromElf.exe V6.18
+CPU DLL:         SARMCM3.DLL V5.37.0.0
+Dialog DLL:      DCM.DLL V1.17.5.0
+Target DLL:      UL2CM3.DLL V1.164.7.0
+Dialog DLL:      TCM.DLL V1.56.1.0
+ 
+<h2>Project:</h2>
+C:\Users\MaNo\Documents\GitHub\Egyfwd\app\main.uvprojx
+Project File Date:  07/29/2022
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.18', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
+Rebuild target 'Target 1'
+../nvic/nvic.c(1): warning: In file included from...
+../nvic/nvic.h(2): warning: In file included from...
+../nvic/nvic_types.h(29): warning: no newline at end of file [-Wnewline-eof]
+}IRQn_Type;
+           ^
+../nvic/nvic.c(2): warning: non-portable path to file '"tm4c1230c3pm.h"'; specified path differs in case from file name on disk [-Wnonportable-include-path]
+#include "TM4C1230C3PM.h"
+         ^~~~~~~~~~~~~~~~
+         "tm4c1230c3pm.h"
+2 warnings generated.
+compiling nvic.c...
+../timer/timer.c(5): warning: In file included from...
+../timer/timer\timer_types.h(25): warning: no newline at end of file [-Wnewline-eof]
+#define TIMER_CTL_TAEN          0x00000001  // GPTM Timer A Enable
+                                                                  ^
+../timer/timer.c(153): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+    HWREG(ui32Base + TIMER_O_CTL) &= ~(TIMER_CTL_TAEN | TIMER_CTL_TBEN);
+                                  ~~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../timer/timer.c(314): warning: no newline at end of file [-Wnewline-eof]
+}
+ ^
+3 warnings generated.
+compiling timer.c...
+main.c(3): warning: In file included from...
+C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(298): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(338): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(357): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(713): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(729): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(774): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(779): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(872): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(885): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(892): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(897): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(904): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(910): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(917): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(924): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(929): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(936): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(942): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(949): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(956): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(961): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(968): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(974): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(981): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(988): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(993): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(1000): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(1006): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(1013): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(1020): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(1025): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(1032): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(1038): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(1045): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(1052): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(1057): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(1064): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(1070): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(1077): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(1084): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(1089): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(1096): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(1102): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(1251): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+main.c(4): warning: In file included from...
+../inc\my_TM4C123GH6PM.h(12679): warning: no newline at end of file [-Wnewline-eof]
+#endif // __TM4C123GH6PM_H__
+                            ^
+45 warnings generated.
+compiling main.c...
+../sysctl/sysctl.c(457): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(465): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(489): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(498): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(523): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(566): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(582): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(630): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(646): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(665): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(681): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(701): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(717): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(760): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(791): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(839): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(963): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(965): warning: '/*' within block comment [-Wcomment]
+/*
+^
+../sysctl/sysctl.c(981): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1030): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1046): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1096): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1112): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1164): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1180): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1196): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1230): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1257): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1272): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1285): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1300): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1320): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1330): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1350): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1360): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1389): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1399): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1420): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1438): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1458): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1479): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1496): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1506): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1527): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1548): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1566): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1576): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1608): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1618): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1652): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1662): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1674): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1693): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1706): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1716): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1729): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1749): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1763): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1773): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1790): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1800): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1828): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1847): warning: '/*' within block comment [-Wcomment]
+/*#if defined(rvmdk) || defined(__ARMCC_VERSION)
+^
+../sysctl/sysctl.c(1873): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1904): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1914): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1941): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(1987): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(2035): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(2042): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(2055): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(2062): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(2119): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(2474): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(2536): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(2710): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(2731): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(2956): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(2993): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(3003): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(3043): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(3135): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(3156): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(3185): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(3199): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(3229): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(3252): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(3275): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(3298): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(3321): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(3333): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(3343): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(3355): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(3365): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(3423): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(3433): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(3469): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(3479): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(3506): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(3516): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(3547): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(3554): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(3587): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(3597): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(3638): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(3654): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(3690): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(3700): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(3705): warning: '/*' within block comment [-Wcomment]
+//*****************************************************************************
+ ^
+../sysctl/sysctl.c(3708): warning: no newline at end of file [-Wnewline-eof]
+*/
+  ^
+../sysctl/sysctl.c(80): warning: unused variable 'g_pui32Xtals' [-Wunused-const-variable]
+static const uint32_t g_pui32Xtals[] =
+                      ^
+../sysctl/sysctl.c(136): warning: unused variable 'g_pppui32XTALtoVCO' [-Wunused-const-variable]
+static const uint32_t g_pppui32XTALtoVCO[MAX_VCO_ENTRIES][MAX_XTAL_ENTRIES][2] =
+                      ^
+../sysctl/sysctl.c(226): warning: unused function '_SysCtlMemTimingGet' [-Wunused-function]
+_SysCtlMemTimingGet(uint32_t ui32SysClock)
+^
+../sysctl/sysctl.c(265): warning: unused function '_SysCtlFrequencyGet' [-Wunused-function]
+_SysCtlFrequencyGet(uint32_t ui32Xtal)
+^
+../sysctl/sysctl.c(329): warning: unused variable 'g_pui32VCOFrequencies' [-Wunused-const-variable]
+static const uint32_t g_pui32VCOFrequencies[MAX_VCO_ENTRIES] =
+                      ^
+115 warnings generated.
+compiling sysctl.c...
+assembling startup_TM4C123.s...
+RTE/Device/TM4C123GH6PM/system_TM4C123.c(13): warning: In file included from...
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123\TM4C123.h(98): warning: In file included from...
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(298): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(338): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(357): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(713): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(729): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(774): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(779): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(872): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(885): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(892): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(897): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(904): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(910): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(917): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(924): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(929): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(936): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(942): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(949): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(956): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(961): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(968): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(974): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(981): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(988): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(993): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(1000): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(1006): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(1013): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(1020): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(1025): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(1032): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(1038): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(1045): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(1052): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(1057): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(1064): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(1070): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(1077): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(1084): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(1089): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(1096): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(1102): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h(1251): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+44 warnings generated.
+compiling system_TM4C123.c...
+linking...
+Program Size: Code=1256 RO-data=636 RW-data=0 ZI-data=608  
+FromELF: creating hex file...
+".\Objects\main.axf" - 0 Error(s), 209 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.9.0.pack
+                ARM.CMSIS.5.9.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.6.0
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.TM4C_DFP.1.1.0.pack
+                Keil.TM4C_DFP.1.1.0
+                Texas Instruments Tiva C Series Device Support and Examples
+   * Component: Startup Version: 1.0.1
+
+<h2>Collection of Component include folders:</h2>
+  ./RTE/_Target_1
+  C:/Users/MaNo/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include
+  C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.6.0
+
+   * Component: Keil::Device:Startup:1.0.1
+      Include file:  Device/Include/TM4C123/TM4C123.h
+      Source file:   Device/Source/ARM/startup_TM4C123.s
+      Source file:   Device/Source/system_TM4C123.c
+Build Time Elapsed:  00:00:07
+</pre>
+</body>
+</html>
