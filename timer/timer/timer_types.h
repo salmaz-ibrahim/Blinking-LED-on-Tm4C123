@@ -23,3 +23,4 @@
 #define TIMER_CTL_TAEVENT_BOTH  0x0000000C  // Both edges
 #define TIMER_CTL_TASTALL       0x00000002  // GPTM Timer A Stall Enable
 #define TIMER_CTL_TAEN          0x00000001  // GPTM Timer A Enable
+

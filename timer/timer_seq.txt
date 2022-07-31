@@ -1,0 +1,5 @@
+1. TimerDisable: void
+TimerDisable(uint32_t ui32Base,
+uint32_t ui32Timer) // Disable the Timer 
+2. Write the GPTM Configuration Register (GPTMCFG) with a value of 0x0000.0000 
+3. 
