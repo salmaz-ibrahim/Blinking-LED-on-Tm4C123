@@ -22,11 +22,16 @@ Dialog DLL:      TCM.DLL V1.56.1.0
  
 <h2>Project:</h2>
 C:\Users\MaNo\Documents\GitHub\Egyfwd\app\main.uvprojx
-Project File Date:  07/29/2022
+Project File Date:  08/04/2022
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.18', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Rebuild target 'Target 1'
+../timer/timer.c(153): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+    HWREG(ui32Base + TIMER_O_CTL) &= ~(TIMER_CTL_TAEN | TIMER_CTL_TBEN);
+                                  ~~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1 warning generated.
+compiling timer.c...
 ../nvic/nvic.c(1): warning: In file included from...
 ../nvic/nvic.h(2): warning: In file included from...
 ../nvic/nvic_types.h(29): warning: no newline at end of file [-Wnewline-eof]
@@ -38,11 +43,6 @@ Rebuild target 'Target 1'
          "tm4c1230c3pm.h"
 2 warnings generated.
 compiling nvic.c...
-../timer/timer.c(153): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
-    HWREG(ui32Base + TIMER_O_CTL) &= ~(TIMER_CTL_TAEN | TIMER_CTL_TBEN);
-                                  ~~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-1 warning generated.
-compiling timer.c...
 main.c(3): warning: In file included from...
 C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(298): warning: anonymous unions are a C11 extension [-Wc11-extensions]
   union {
@@ -180,349 +180,23 @@ main.c(4): warning: In file included from...
 ../inc\my_TM4C123GH6PM.h(12679): warning: no newline at end of file [-Wnewline-eof]
 #endif // __TM4C123GH6PM_H__
                             ^
-45 warnings generated.
+main.c(9): warning: In file included from...
+../common\macros.h(9): warning: no newline at end of file [-Wnewline-eof]
+#endif
+      ^
+46 warnings generated.
 compiling main.c...
-../sysctl/sysctl.c(424): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(432): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(456): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(465): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(490): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(533): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(549): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(597): warning: '/*' within block comment [-Wcomment]
-//***************************************************************************** */
- ^
-../sysctl/sysctl.c(650): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(670): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(686): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(729): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(760): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(808): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(932): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(934): warning: '/*' within block comment [-Wcomment]
-/*
-^
-../sysctl/sysctl.c(950): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(999): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1015): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1065): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1081): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1133): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1149): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1165): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1199): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1226): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1241): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1254): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1269): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1289): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1299): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1319): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1329): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1358): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1368): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1389): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1407): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1427): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1448): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1465): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1475): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1496): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1517): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1535): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1545): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1577): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1587): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1621): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1631): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1643): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1662): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1675): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1685): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1698): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1718): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1732): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1742): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1759): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1769): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1797): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1816): warning: '/*' within block comment [-Wcomment]
-/*#if defined(rvmdk) || defined(__ARMCC_VERSION)
-^
-../sysctl/sysctl.c(1842): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1873): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1883): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1910): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(1956): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(2004): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(2011): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(2024): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(2031): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(2088): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(2443): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(2505): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(2679): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(2700): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(2925): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(2962): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(2972): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(3012): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(3104): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(3125): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(3154): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(3168): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(3198): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(3221): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(3244): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(3267): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(3290): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(3302): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(3312): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(3324): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(3334): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(3392): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(3402): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(3438): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(3448): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(3475): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(3485): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(3516): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(3523): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(3556): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(3566): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(3607): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(3623): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(3659): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(3669): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(3674): warning: '/*' within block comment [-Wcomment]
-//*****************************************************************************
- ^
-../sysctl/sysctl.c(3677): warning: no newline at end of file [-Wnewline-eof]
-*/
-  ^
-../sysctl/sysctl.c(47): warning: unused variable 'g_pui32Xtals' [-Wunused-const-variable]
+../sysctl/my_sysctl.c(51): warning: unused variable 'g_pui32Xtals' [-Wunused-const-variable]
 static const uint32_t g_pui32Xtals[] =
                       ^
-../sysctl/sysctl.c(103): warning: unused variable 'g_pppui32XTALtoVCO' [-Wunused-const-variable]
+../sysctl/my_sysctl.c(107): warning: unused variable 'g_pppui32XTALtoVCO' [-Wunused-const-variable]
 static const uint32_t g_pppui32XTALtoVCO[MAX_VCO_ENTRIES][MAX_XTAL_ENTRIES][2] =
                       ^
-../sysctl/sysctl.c(193): warning: unused function '_SysCtlMemTimingGet' [-Wunused-function]
-_SysCtlMemTimingGet(uint32_t ui32SysClock)
+../sysctl/my_sysctl.c(167): warning: unused variable 'g_sXTALtoMEMTIM' [-Wunused-const-variable]
+g_sXTALtoMEMTIM[] =
 ^
-../sysctl/sysctl.c(232): warning: unused function '_SysCtlFrequencyGet' [-Wunused-function]
-_SysCtlFrequencyGet(uint32_t ui32Xtal)
-^
-../sysctl/sysctl.c(296): warning: unused variable 'g_pui32VCOFrequencies' [-Wunused-const-variable]
-static const uint32_t g_pui32VCOFrequencies[MAX_VCO_ENTRIES] =
-                      ^
-113 warnings generated.
-compiling sysctl.c...
+3 warnings generated.
+compiling my_sysctl.c...
 assembling startup_TM4C123.s...
 RTE/Device/TM4C123GH6PM/system_TM4C123.c(13): warning: In file included from...
 C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123\TM4C123.h(98): warning: In file included from...
@@ -661,9 +335,9 @@ C:/Users/MaNo/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123
 44 warnings generated.
 compiling system_TM4C123.c...
 linking...
-Program Size: Code=1364 RO-data=636 RW-data=0 ZI-data=608  
+Program Size: Code=1268 RO-data=636 RW-data=0 ZI-data=608  
 FromELF: creating hex file...
-".\Objects\main.axf" - 0 Error(s), 205 Warning(s).
+".\Objects\main.axf" - 0 Error(s), 96 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -689,10 +363,10 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE:5.6.0
 
    * Component: Keil::Device:Startup:1.0.1
-      Include file:  Device/Include/TM4C123/TM4C123.h
       Source file:   Device/Source/ARM/startup_TM4C123.s
       Source file:   Device/Source/system_TM4C123.c
-Build Time Elapsed:  00:00:09
+      Include file:  Device/Include/TM4C123/TM4C123.h
+Build Time Elapsed:  00:00:05
 </pre>
 </body>
 </html>

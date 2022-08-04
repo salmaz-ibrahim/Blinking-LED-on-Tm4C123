@@ -9,4 +9,4 @@
   C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\system_TM4C123.h \
   ..\inc\my_TM4C123GH6PM.h ..\timer\timer\timer.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h ..\sysctl\sysctl.h \
-  ..\inc\hw_timer.h
+  ..\inc\hw_timer.h ..\common\macros.h

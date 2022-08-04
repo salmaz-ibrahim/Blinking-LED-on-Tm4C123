@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>..\nvic;..\inc;..\timer\timer;..\sysctl;..\driverlib</IncludePath>
+              <IncludePath>..\nvic;..\inc;..\timer\timer;..\sysctl;..\driverlib;..\common</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -412,12 +412,12 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>New Group</GroupName>
+          <GroupName>sysctl</GroupName>
           <Files>
             <File>
-              <FileName>sysctl.c</FileName>
+              <FileName>my_sysctl.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\sysctl\sysctl.c</FilePath>
+              <FilePath>..\sysctl\my_sysctl.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -599,11 +599,7 @@ SysCtlPeripheralPresent(uint32_t ui32Peripheral)
 bool
 SysCtlPeripheralReady(uint32_t ui32Peripheral)
 {
-    //
-    // Check the arguments.
-    //
-    ASSERT(_SysCtlPeripheralValid(ui32Peripheral));
-
+    
     //
     // See if this peripheral is ready.
     //
@@ -727,15 +723,12 @@ SysCtlPeripheralPowerOff(uint32_t ui32Peripheral)
 //! \return None.
 //
 //*****************************************************************************
+*/
 void
 SysCtlPeripheralReset(uint32_t ui32Peripheral)
 {
     volatile uint_fast8_t ui8Delay;
 
-    //
-    // Check the arguments.
-    //
-    ASSERT(_SysCtlPeripheralValid(ui32Peripheral));
 
     //
     // Put the peripheral into the reset state.
@@ -756,6 +749,7 @@ SysCtlPeripheralReset(uint32_t ui32Peripheral)
     HWREGBITW(SYSCTL_SRBASE + ((ui32Peripheral & 0xff00) >> 8),
               ui32Peripheral & 0xff) = 0;
 }
+
 
 //*****************************************************************************
 //
@@ -806,15 +800,11 @@ SysCtlPeripheralReset(uint32_t ui32Peripheral)
 //! \return None.
 //
 //*****************************************************************************
-*/
+
 void
 SysCtlPeripheralEnable(uint32_t ui32Peripheral)
 {
-    //
-    // Check the arguments.
-    //
-    ASSERT(_SysCtlPeripheralValid(ui32Peripheral));
-
+   
     //
     // Enable this peripheral.
     //
@@ -822,407 +812,7 @@ SysCtlPeripheralEnable(uint32_t ui32Peripheral)
               ui32Peripheral & 0xff) = 1;
 }
 
-//*****************************************************************************
-//
-//! Disables a peripheral.
-//!
-//! \param ui32Peripheral is the peripheral to disable.
-//!
-//! This function disables a peripheral.  Once disabled, they do not operate or
-//! respond to register reads/writes.
-//!
-//! The \e ui32Peripheral parameter must be only one of the following values:
-//! \b SYSCTL_PERIPH_ADC0, \b SYSCTL_PERIPH_ADC1, \b SYSCTL_PERIPH_CAN0,
-//! \b SYSCTL_PERIPH_CAN1, \b SYSCTL_PERIPH_CCM0,\b SYSCTL_PERIPH_COMP0,
-//! \b SYSCTL_PERIPH_EEPROM0, \b SYSCTL_PERIPH_EMAC, \b SYSCTL_PERIPH_EPHY,
-//! \b SYSCTL_PERIPH_EPI0,
-//! \b SYSCTL_PERIPH_GPIOA, \b SYSCTL_PERIPH_GPIOB, \b SYSCTL_PERIPH_GPIOC,
-//! \b SYSCTL_PERIPH_GPIOD, \b SYSCTL_PERIPH_GPIOE, \b SYSCTL_PERIPH_GPIOF,
-//! \b SYSCTL_PERIPH_GPIOG, \b SYSCTL_PERIPH_GPIOH, \b SYSCTL_PERIPH_GPIOJ,
-//! \b SYSCTL_PERIPH_GPIOK, \b SYSCTL_PERIPH_GPIOL, \b SYSCTL_PERIPH_GPIOM,
-//! \b SYSCTL_PERIPH_GPION, \b SYSCTL_PERIPH_GPIOP, \b SYSCTL_PERIPH_GPIOQ,
-//! \b SYSCTL_PERIPH_GPIOR, \b SYSCTL_PERIPH_GPIOS, \b SYSCTL_PERIPH_GPIOT,
-//! \b SYSCTL_PERIPH_HIBERNATE,
-//! \b SYSCTL_PERIPH_I2C0, \b SYSCTL_PERIPH_I2C1, \b SYSCTL_PERIPH_I2C2,
-//! \b SYSCTL_PERIPH_I2C3, \b SYSCTL_PERIPH_I2C4, \b SYSCTL_PERIPH_I2C5,
-//! \b SYSCTL_PERIPH_I2C6, \b SYSCTL_PERIPH_I2C7, \b SYSCTL_PERIPH_I2C8,
-//! \b SYSCTL_PERIPH_I2C9, \b SYSCTL_PERIPH_LCD0,
-//! \b SYSCTL_PERIPH_ONEWIRE0,
-//! \b SYSCTL_PERIPH_PWM0, \b SYSCTL_PERIPH_PWM1, \b SYSCTL_PERIPH_QEI0,
-//! \b SYSCTL_PERIPH_QEI1, \b SYSCTL_PERIPH_SSI0, \b SYSCTL_PERIPH_SSI1,
-//! \b SYSCTL_PERIPH_SSI2, \b SYSCTL_PERIPH_SSI3, \b SYSCTL_PERIPH_TIMER0,
-//! \b SYSCTL_PERIPH_TIMER1, \b SYSCTL_PERIPH_TIMER2, \b SYSCTL_PERIPH_TIMER3,
-//! \b SYSCTL_PERIPH_TIMER4, \b SYSCTL_PERIPH_TIMER5, \b SYSCTL_PERIPH_TIMER6,
-//! \b SYSCTL_PERIPH_TIMER7, \b SYSCTL_PERIPH_UART0, \b SYSCTL_PERIPH_UART1,
-//! \b SYSCTL_PERIPH_UART2, \b SYSCTL_PERIPH_UART3, \b SYSCTL_PERIPH_UART4,
-//! \b SYSCTL_PERIPH_UART5, \b SYSCTL_PERIPH_UART6, \b SYSCTL_PERIPH_UART7,
-//! \b SYSCTL_PERIPH_UDMA, \b SYSCTL_PERIPH_USB0, \b SYSCTL_PERIPH_WDOG0,
-//! \b SYSCTL_PERIPH_WDOG1, \b SYSCTL_PERIPH_WTIMER0, \b SYSCTL_PERIPH_WTIMER1,
-//! \b SYSCTL_PERIPH_WTIMER2, \b SYSCTL_PERIPH_WTIMER3,
-//! \b SYSCTL_PERIPH_WTIMER4, or \b SYSCTL_PERIPH_WTIMER5
-//!
-//! \return None.
-//
-//*****************************************************************************
-void
-SysCtlPeripheralDisable(uint32_t ui32Peripheral)
-{
-    //
-    // Check the arguments.
-    //
-    ASSERT(_SysCtlPeripheralValid(ui32Peripheral));
-
-    //
-    // Disable this peripheral.
-    //
-    HWREGBITW(SYSCTL_RCGCBASE + ((ui32Peripheral & 0xff00) >> 8),
-              ui32Peripheral & 0xff) = 0;
-}
-
-
 /*
-
-//
-//! Enables a peripheral in sleep mode.
-//!
-//! \param ui32Peripheral is the peripheral to enable in sleep mode.
-//!
-//! This function allows a peripheral to continue operating when the processor
-//! goes into sleep mode.  Because the clocking configuration of the device
-//! does not change, any peripheral can safely continue operating while the
-//! processor is in sleep mode and can therefore wake the processor from sleep
-//! mode.
-//!
-//! Sleep mode clocking of peripherals must be enabled via
-//! SysCtlPeripheralClockGating(); if disabled, the peripheral sleep mode
-//! configuration is maintained but has no effect when sleep mode is entered.
-//!
-//! The \e ui32Peripheral parameter must be only one of the following values:
-//! \b SYSCTL_PERIPH_ADC0, \b SYSCTL_PERIPH_ADC1, \b SYSCTL_PERIPH_CAN0,
-//! \b SYSCTL_PERIPH_CAN1, \b SYSCTL_PERIPH_CCM0,\b SYSCTL_PERIPH_COMP0,
-//! \b SYSCTL_PERIPH_EEPROM0, \b SYSCTL_PERIPH_EMAC, \b SYSCTL_PERIPH_EPHY,
-//! \b SYSCTL_PERIPH_EPI0,
-//! \b SYSCTL_PERIPH_GPIOA, \b SYSCTL_PERIPH_GPIOB, \b SYSCTL_PERIPH_GPIOC,
-//! \b SYSCTL_PERIPH_GPIOD, \b SYSCTL_PERIPH_GPIOE, \b SYSCTL_PERIPH_GPIOF,
-//! \b SYSCTL_PERIPH_GPIOG, \b SYSCTL_PERIPH_GPIOH, \b SYSCTL_PERIPH_GPIOJ,
-//! \b SYSCTL_PERIPH_GPIOK, \b SYSCTL_PERIPH_GPIOL, \b SYSCTL_PERIPH_GPIOM,
-//! \b SYSCTL_PERIPH_GPION, \b SYSCTL_PERIPH_GPIOP, \b SYSCTL_PERIPH_GPIOQ,
-//! \b SYSCTL_PERIPH_GPIOR, \b SYSCTL_PERIPH_GPIOS, \b SYSCTL_PERIPH_GPIOT,
-//! \b SYSCTL_PERIPH_HIBERNATE,
-//! \b SYSCTL_PERIPH_I2C0, \b SYSCTL_PERIPH_I2C1, \b SYSCTL_PERIPH_I2C2,
-//! \b SYSCTL_PERIPH_I2C3, \b SYSCTL_PERIPH_I2C4, \b SYSCTL_PERIPH_I2C5,
-//! \b SYSCTL_PERIPH_I2C6, \b SYSCTL_PERIPH_I2C7, \b SYSCTL_PERIPH_I2C8,
-//! \b SYSCTL_PERIPH_I2C9, \b SYSCTL_PERIPH_LCD0,
-//! \b SYSCTL_PERIPH_ONEWIRE0,
-//! \b SYSCTL_PERIPH_PWM0, \b SYSCTL_PERIPH_PWM1, \b SYSCTL_PERIPH_QEI0,
-//! \b SYSCTL_PERIPH_QEI1, \b SYSCTL_PERIPH_SSI0, \b SYSCTL_PERIPH_SSI1,
-//! \b SYSCTL_PERIPH_SSI2, \b SYSCTL_PERIPH_SSI3, \b SYSCTL_PERIPH_TIMER0,
-//! \b SYSCTL_PERIPH_TIMER1, \b SYSCTL_PERIPH_TIMER2, \b SYSCTL_PERIPH_TIMER3,
-//! \b SYSCTL_PERIPH_TIMER4, \b SYSCTL_PERIPH_TIMER5, \b SYSCTL_PERIPH_TIMER6,
-//! \b SYSCTL_PERIPH_TIMER7, \b SYSCTL_PERIPH_UART0, \b SYSCTL_PERIPH_UART1,
-//! \b SYSCTL_PERIPH_UART2, \b SYSCTL_PERIPH_UART3, \b SYSCTL_PERIPH_UART4,
-//! \b SYSCTL_PERIPH_UART5, \b SYSCTL_PERIPH_UART6, \b SYSCTL_PERIPH_UART7,
-//! \b SYSCTL_PERIPH_UDMA, \b SYSCTL_PERIPH_USB0, \b SYSCTL_PERIPH_WDOG0,
-//! \b SYSCTL_PERIPH_WDOG1, \b SYSCTL_PERIPH_WTIMER0, \b SYSCTL_PERIPH_WTIMER1,
-//! \b SYSCTL_PERIPH_WTIMER2, \b SYSCTL_PERIPH_WTIMER3,
-//! \b SYSCTL_PERIPH_WTIMER4, or \b SYSCTL_PERIPH_WTIMER5
-//!
-//! \return None.
-//
-//*****************************************************************************
-
-/*
-void
-SysCtlPeripheralSleepEnable(uint32_t ui32Peripheral)
-{
-    //
-    // Check the arguments.
-    //
-    ASSERT(_SysCtlPeripheralValid(ui32Peripheral));
-
-    //
-    // Enable this peripheral in sleep mode.
-    //
-    HWREGBITW(SYSCTL_SCGCBASE + ((ui32Peripheral & 0xff00) >> 8),
-              ui32Peripheral & 0xff) = 1;
-}
-
-//*****************************************************************************
-//
-//! Disables a peripheral in sleep mode.
-//!
-//! \param ui32Peripheral is the peripheral to disable in sleep mode.
-//!
-//! This function causes a peripheral to stop operating when the processor goes
-//! into sleep mode.  Disabling peripherals while in sleep mode helps to lower
-//! the current draw of the device.  If enabled (via SysCtlPeripheralEnable()),
-//! the peripheral automatically resumes operation when the processor
-//! leaves sleep mode, maintaining its entire state from before sleep mode was
-//! entered.
-//!
-//! Sleep mode clocking of peripherals must be enabled via
-//! SysCtlPeripheralClockGating(); if disabled, the peripheral sleep mode
-//! configuration is maintained but has no effect when sleep mode is entered.
-//!
-//! The \e ui32Peripheral parameter must be only one of the following values:
-//! \b SYSCTL_PERIPH_ADC0, \b SYSCTL_PERIPH_ADC1, \b SYSCTL_PERIPH_CAN0,
-//! \b SYSCTL_PERIPH_CAN1, \b SYSCTL_PERIPH_CCM0,\b SYSCTL_PERIPH_COMP0,
-//! \b SYSCTL_PERIPH_EEPROM0, \b SYSCTL_PERIPH_EMAC, \b SYSCTL_PERIPH_EPHY,
-//! \b SYSCTL_PERIPH_EPI0,
-//! \b SYSCTL_PERIPH_GPIOA, \b SYSCTL_PERIPH_GPIOB, \b SYSCTL_PERIPH_GPIOC,
-//! \b SYSCTL_PERIPH_GPIOD, \b SYSCTL_PERIPH_GPIOE, \b SYSCTL_PERIPH_GPIOF,
-//! \b SYSCTL_PERIPH_GPIOG, \b SYSCTL_PERIPH_GPIOH, \b SYSCTL_PERIPH_GPIOJ,
-//! \b SYSCTL_PERIPH_GPIOK, \b SYSCTL_PERIPH_GPIOL, \b SYSCTL_PERIPH_GPIOM,
-//! \b SYSCTL_PERIPH_GPION, \b SYSCTL_PERIPH_GPIOP, \b SYSCTL_PERIPH_GPIOQ,
-//! \b SYSCTL_PERIPH_GPIOR, \b SYSCTL_PERIPH_GPIOS, \b SYSCTL_PERIPH_GPIOT,
-//! \b SYSCTL_PERIPH_HIBERNATE,
-//! \b SYSCTL_PERIPH_I2C0, \b SYSCTL_PERIPH_I2C1, \b SYSCTL_PERIPH_I2C2,
-//! \b SYSCTL_PERIPH_I2C3, \b SYSCTL_PERIPH_I2C4, \b SYSCTL_PERIPH_I2C5,
-//! \b SYSCTL_PERIPH_I2C6, \b SYSCTL_PERIPH_I2C7, \b SYSCTL_PERIPH_I2C8,
-//! \b SYSCTL_PERIPH_I2C9, \b SYSCTL_PERIPH_LCD0,
-//! \b SYSCTL_PERIPH_ONEWIRE0,
-//! \b SYSCTL_PERIPH_PWM0, \b SYSCTL_PERIPH_PWM1, \b SYSCTL_PERIPH_QEI0,
-//! \b SYSCTL_PERIPH_QEI1, \b SYSCTL_PERIPH_SSI0, \b SYSCTL_PERIPH_SSI1,
-//! \b SYSCTL_PERIPH_SSI2, \b SYSCTL_PERIPH_SSI3, \b SYSCTL_PERIPH_TIMER0,
-//! \b SYSCTL_PERIPH_TIMER1, \b SYSCTL_PERIPH_TIMER2, \b SYSCTL_PERIPH_TIMER3,
-//! \b SYSCTL_PERIPH_TIMER4, \b SYSCTL_PERIPH_TIMER5, \b SYSCTL_PERIPH_TIMER6,
-//! \b SYSCTL_PERIPH_TIMER7, \b SYSCTL_PERIPH_UART0, \b SYSCTL_PERIPH_UART1,
-//! \b SYSCTL_PERIPH_UART2, \b SYSCTL_PERIPH_UART3, \b SYSCTL_PERIPH_UART4,
-//! \b SYSCTL_PERIPH_UART5, \b SYSCTL_PERIPH_UART6, \b SYSCTL_PERIPH_UART7,
-//! \b SYSCTL_PERIPH_UDMA, \b SYSCTL_PERIPH_USB0, \b SYSCTL_PERIPH_WDOG0,
-//! \b SYSCTL_PERIPH_WDOG1, \b SYSCTL_PERIPH_WTIMER0, \b SYSCTL_PERIPH_WTIMER1,
-//! \b SYSCTL_PERIPH_WTIMER2, \b SYSCTL_PERIPH_WTIMER3,
-//! \b SYSCTL_PERIPH_WTIMER4, or \b SYSCTL_PERIPH_WTIMER5
-//!
-//! \return None.
-//
-//*****************************************************************************
-void
-SysCtlPeripheralSleepDisable(uint32_t ui32Peripheral)
-{
-    //
-    // Check the arguments.
-    //
-    ASSERT(_SysCtlPeripheralValid(ui32Peripheral));
-
-    //
-    // Disable this peripheral in sleep mode.
-    //
-    HWREGBITW(SYSCTL_SCGCBASE + ((ui32Peripheral & 0xff00) >> 8),
-              ui32Peripheral & 0xff) = 0;
-}
-
-//*****************************************************************************
-//
-//! Enables a peripheral in deep-sleep mode.
-//!
-//! \param ui32Peripheral is the peripheral to enable in deep-sleep mode.
-//!
-//! This function allows a peripheral to continue operating when the processor
-//! goes into deep-sleep mode.  Because the clocking configuration of the
-//! device may change, not all peripherals can safely continue operating while
-//! the processor is in deep-sleep mode.  Those that must run at a particular
-//! frequency (such as a UART) do not work as expected if the clock changes.
-//! It is the responsibility of the caller to make sensible choices.
-//!
-//! Deep-sleep mode clocking of peripherals must be enabled via
-//! SysCtlPeripheralClockGating(); if disabled, the peripheral deep-sleep mode
-//! configuration is maintained but has no effect when deep-sleep mode is
-//! entered.
-//!
-//! The \e ui32Peripheral parameter must be only one of the following values:
-//! \b SYSCTL_PERIPH_ADC0, \b SYSCTL_PERIPH_ADC1, \b SYSCTL_PERIPH_CAN0,
-//! \b SYSCTL_PERIPH_CAN1, \b SYSCTL_PERIPH_CCM0,\b SYSCTL_PERIPH_COMP0,
-//! \b SYSCTL_PERIPH_EEPROM0, \b SYSCTL_PERIPH_EMAC, \b SYSCTL_PERIPH_EPHY,
-//! \b SYSCTL_PERIPH_EPI0,
-//! \b SYSCTL_PERIPH_GPIOA, \b SYSCTL_PERIPH_GPIOB, \b SYSCTL_PERIPH_GPIOC,
-//! \b SYSCTL_PERIPH_GPIOD, \b SYSCTL_PERIPH_GPIOE, \b SYSCTL_PERIPH_GPIOF,
-//! \b SYSCTL_PERIPH_GPIOG, \b SYSCTL_PERIPH_GPIOH, \b SYSCTL_PERIPH_GPIOJ,
-//! \b SYSCTL_PERIPH_GPIOK, \b SYSCTL_PERIPH_GPIOL, \b SYSCTL_PERIPH_GPIOM,
-//! \b SYSCTL_PERIPH_GPION, \b SYSCTL_PERIPH_GPIOP, \b SYSCTL_PERIPH_GPIOQ,
-//! \b SYSCTL_PERIPH_GPIOR, \b SYSCTL_PERIPH_GPIOS, \b SYSCTL_PERIPH_GPIOT,
-//! \b SYSCTL_PERIPH_HIBERNATE,
-//! \b SYSCTL_PERIPH_I2C0, \b SYSCTL_PERIPH_I2C1, \b SYSCTL_PERIPH_I2C2,
-//! \b SYSCTL_PERIPH_I2C3, \b SYSCTL_PERIPH_I2C4, \b SYSCTL_PERIPH_I2C5,
-//! \b SYSCTL_PERIPH_I2C6, \b SYSCTL_PERIPH_I2C7, \b SYSCTL_PERIPH_I2C8,
-//! \b SYSCTL_PERIPH_I2C9, \b SYSCTL_PERIPH_LCD0,
-//! \b SYSCTL_PERIPH_ONEWIRE0,
-//! \b SYSCTL_PERIPH_PWM0, \b SYSCTL_PERIPH_PWM1, \b SYSCTL_PERIPH_QEI0,
-//! \b SYSCTL_PERIPH_QEI1, \b SYSCTL_PERIPH_SSI0, \b SYSCTL_PERIPH_SSI1,
-//! \b SYSCTL_PERIPH_SSI2, \b SYSCTL_PERIPH_SSI3, \b SYSCTL_PERIPH_TIMER0,
-//! \b SYSCTL_PERIPH_TIMER1, \b SYSCTL_PERIPH_TIMER2, \b SYSCTL_PERIPH_TIMER3,
-//! \b SYSCTL_PERIPH_TIMER4, \b SYSCTL_PERIPH_TIMER5, \b SYSCTL_PERIPH_TIMER6,
-//! \b SYSCTL_PERIPH_TIMER7, \b SYSCTL_PERIPH_UART0, \b SYSCTL_PERIPH_UART1,
-//! \b SYSCTL_PERIPH_UART2, \b SYSCTL_PERIPH_UART3, \b SYSCTL_PERIPH_UART4,
-//! \b SYSCTL_PERIPH_UART5, \b SYSCTL_PERIPH_UART6, \b SYSCTL_PERIPH_UART7,
-//! \b SYSCTL_PERIPH_UDMA, \b SYSCTL_PERIPH_USB0, \b SYSCTL_PERIPH_WDOG0,
-//! \b SYSCTL_PERIPH_WDOG1, \b SYSCTL_PERIPH_WTIMER0, \b SYSCTL_PERIPH_WTIMER1,
-//! \b SYSCTL_PERIPH_WTIMER2, \b SYSCTL_PERIPH_WTIMER3,
-//! \b SYSCTL_PERIPH_WTIMER4, or \b SYSCTL_PERIPH_WTIMER5
-//!
-//! \return None.
-//
-//*****************************************************************************
-void
-SysCtlPeripheralDeepSleepEnable(uint32_t ui32Peripheral)
-{
-    //
-    // Check the arguments.
-    //
-    ASSERT(_SysCtlPeripheralValid(ui32Peripheral));
-
-    //
-    // Enable this peripheral in deep-sleep mode.
-    //
-    HWREGBITW(SYSCTL_DCGCBASE + ((ui32Peripheral & 0xff00) >> 8),
-              ui32Peripheral & 0xff) = 1;
-}
-
-//*****************************************************************************
-//
-//! Disables a peripheral in deep-sleep mode.
-//!
-//! \param ui32Peripheral is the peripheral to disable in deep-sleep mode.
-//!
-//! This function causes a peripheral to stop operating when the processor goes
-//! into deep-sleep mode.  Disabling peripherals while in deep-sleep mode helps
-//! to lower the current draw of the device, and can keep peripherals that
-//! require a particular clock frequency from operating when the clock changes
-//! as a result of entering deep-sleep mode.  If enabled (via
-//! SysCtlPeripheralEnable()), the peripheral automatically resumes
-//! operation when the processor leaves deep-sleep mode, maintaining its entire
-//! state from before deep-sleep mode was entered.
-//!
-//! Deep-sleep mode clocking of peripherals must be enabled via
-//! SysCtlPeripheralClockGating(); if disabled, the peripheral deep-sleep mode
-//! configuration is maintained but has no effect when deep-sleep mode is
-//! entered.
-//!
-//! The \e ui32Peripheral parameter must be only one of the following values:
-//! \b SYSCTL_PERIPH_ADC0, \b SYSCTL_PERIPH_ADC1, \b SYSCTL_PERIPH_CAN0,
-//! \b SYSCTL_PERIPH_CAN1, \b SYSCTL_PERIPH_CCM0,\b SYSCTL_PERIPH_COMP0,
-//! \b SYSCTL_PERIPH_EEPROM0, \b SYSCTL_PERIPH_EMAC, \b SYSCTL_PERIPH_EPHY,
-//! \b SYSCTL_PERIPH_EPI0,
-//! \b SYSCTL_PERIPH_GPIOA, \b SYSCTL_PERIPH_GPIOB, \b SYSCTL_PERIPH_GPIOC,
-//! \b SYSCTL_PERIPH_GPIOD, \b SYSCTL_PERIPH_GPIOE, \b SYSCTL_PERIPH_GPIOF,
-//! \b SYSCTL_PERIPH_GPIOG, \b SYSCTL_PERIPH_GPIOH, \b SYSCTL_PERIPH_GPIOJ,
-//! \b SYSCTL_PERIPH_GPIOK, \b SYSCTL_PERIPH_GPIOL, \b SYSCTL_PERIPH_GPIOM,
-//! \b SYSCTL_PERIPH_GPION, \b SYSCTL_PERIPH_GPIOP, \b SYSCTL_PERIPH_GPIOQ,
-//! \b SYSCTL_PERIPH_GPIOR, \b SYSCTL_PERIPH_GPIOS, \b SYSCTL_PERIPH_GPIOT,
-//! \b SYSCTL_PERIPH_HIBERNATE,
-//! \b SYSCTL_PERIPH_I2C0, \b SYSCTL_PERIPH_I2C1, \b SYSCTL_PERIPH_I2C2,
-//! \b SYSCTL_PERIPH_I2C3, \b SYSCTL_PERIPH_I2C4, \b SYSCTL_PERIPH_I2C5,
-//! \b SYSCTL_PERIPH_I2C6, \b SYSCTL_PERIPH_I2C7, \b SYSCTL_PERIPH_I2C8,
-//! \b SYSCTL_PERIPH_I2C9, \b SYSCTL_PERIPH_LCD0,
-//! \b SYSCTL_PERIPH_ONEWIRE0,
-//! \b SYSCTL_PERIPH_PWM0, \b SYSCTL_PERIPH_PWM1, \b SYSCTL_PERIPH_QEI0,
-//! \b SYSCTL_PERIPH_QEI1, \b SYSCTL_PERIPH_SSI0, \b SYSCTL_PERIPH_SSI1,
-//! \b SYSCTL_PERIPH_SSI2, \b SYSCTL_PERIPH_SSI3, \b SYSCTL_PERIPH_TIMER0,
-//! \b SYSCTL_PERIPH_TIMER1, \b SYSCTL_PERIPH_TIMER2, \b SYSCTL_PERIPH_TIMER3,
-//! \b SYSCTL_PERIPH_TIMER4, \b SYSCTL_PERIPH_TIMER5, \b SYSCTL_PERIPH_TIMER6,
-//! \b SYSCTL_PERIPH_TIMER7, \b SYSCTL_PERIPH_UART0, \b SYSCTL_PERIPH_UART1,
-//! \b SYSCTL_PERIPH_UART2, \b SYSCTL_PERIPH_UART3, \b SYSCTL_PERIPH_UART4,
-//! \b SYSCTL_PERIPH_UART5, \b SYSCTL_PERIPH_UART6, \b SYSCTL_PERIPH_UART7,
-//! \b SYSCTL_PERIPH_UDMA, \b SYSCTL_PERIPH_USB0, \b SYSCTL_PERIPH_WDOG0,
-//! \b SYSCTL_PERIPH_WDOG1, \b SYSCTL_PERIPH_WTIMER0, \b SYSCTL_PERIPH_WTIMER1,
-//! \b SYSCTL_PERIPH_WTIMER2, \b SYSCTL_PERIPH_WTIMER3,
-//! \b SYSCTL_PERIPH_WTIMER4, or \b SYSCTL_PERIPH_WTIMER5
-//!
-//! \return None.
-//
-//*****************************************************************************
-void
-SysCtlPeripheralDeepSleepDisable(uint32_t ui32Peripheral)
-{
-    //
-    // Check the arguments.
-    //
-    ASSERT(_SysCtlPeripheralValid(ui32Peripheral));
-
-    //
-    // Disable this peripheral in deep-sleep mode.
-    //
-    HWREGBITW(SYSCTL_DCGCBASE + ((ui32Peripheral & 0xff00) >> 8),
-              ui32Peripheral & 0xff) = 0;
-}
-
-//*****************************************************************************
-//
-//! Controls peripheral clock gating in sleep and deep-sleep mode.
-//!
-//! \param bEnable is a boolean that is \b true if the sleep and deep-sleep
-//! peripheral configuration should be used and \b false if not.
-//!
-//! This function controls how peripherals are clocked when the processor goes
-//! into sleep or deep-sleep mode.  By default, the peripherals are clocked the
-//! same as in run mode; if peripheral clock gating is enabled, they are
-//! clocked according to the configuration set by
-//! SysCtlPeripheralSleepEnable(), SysCtlPeripheralSleepDisable(),
-//! SysCtlPeripheralDeepSleepEnable(), and SysCtlPeripheralDeepSleepDisable().
-//!
-//! \return None.
-//
-//*****************************************************************************
-void
-SysCtlPeripheralClockGating(bool bEnable)
-{
-    if(CLASS_IS_TM4C123)
-    {
-        //
-        // Enable peripheral clock gating as requested.
-        //
-        if(bEnable)
-        {
-            HWREG(SYSCTL_RCC) |= SYSCTL_RCC_ACG;
-        }
-        else
-        {
-            HWREG(SYSCTL_RCC) &= ~(SYSCTL_RCC_ACG);
-        }
-    }
-    else
-    {
-        //
-        // Enable peripheral clock gating as requested.
-        //
-        if(bEnable)
-        {
-            HWREG(SYSCTL_RSCLKCFG) |= SYSCTL_RSCLKCFG_ACG;
-        }
-        else
-        {
-            HWREG(SYSCTL_RSCLKCFG) &= ~SYSCTL_RSCLKCFG_ACG;
-        }
-    }
-}
-
-//*****************************************************************************
-//
-//! Registers an interrupt handler for the system control interrupt.
-//!
-//! \param pfnHandler is a pointer to the function to be called when the system
-//! control interrupt occurs.
-//!
-//! This function registers the handler to be called when a system control
-//! interrupt occurs.  This function enables the global interrupt in the
-//! interrupt controller; specific system control interrupts must be enabled
-//! via SysCtlIntEnable().  It is the interrupt handler's responsibility to
-//! clear the interrupt source via SysCtlIntClear().
-//!
-//! System control can generate interrupts when the PLL achieves lock, if the
-//! internal LDO current limit is exceeded, if the internal oscillator fails,
-//! if the main oscillator fails, if the internal LDO output voltage droops too
-//! much, if the external voltage droops too much, or if the PLL fails.
-//!
-//! \sa IntRegister() for important information about registering interrupt
-//! handlers.
-//!
-//! \note The events that cause system control interrupts vary based on the
-//! Tiva part in use.  Please consult the data sheet for the part you are
-//! using to determine which interrupt sources are available.
-//!
-//! \return None.
-//
 //*****************************************************************************
 void
 SysCtlIntRegister(void (*pfnHandler)(void))
