@@ -347,34 +347,17 @@ TimerIntClear(uint32_t ui32Base, uint32_t ui32IntFlags)
     //
     HWREG(ui32Base + TIMER_O_ICR) = ui32IntFlags;
 }
-
-//*****************************************************************************
-//
-//! Enables individual timer interrupt sources.
-//!
-//! \param ui32Base is the base address of the timer module.
-//! \param ui32IntFlags is the bit mask of the interrupt sources to be enabled.
-//!
-//! This function enables the indicated timer interrupt sources.  Only the
-//! sources that are enabled can be reflected to the processor interrupt;
-//! disabled sources have no effect on the processor.
-//!
-//! The \e ui32IntFlags parameter must be the logical OR of any combination of
-//! the following:
-//!
-//! - \b TIMER_TIMB_DMA - Timer B uDMA complete
-//! - \b TIMER_TIMA_DMA - Timer A uDMA complete
-//! - \b TIMER_CAPB_EVENT  - Capture B event interrupt
-//! - \b TIMER_CAPB_MATCH  - Capture B match interrupt
+/******************************************************************************
+* \Syntax          : Std_ReturnType FunctionName(AnyType parameterName)        
+* \Description     : Enables individual timer interrupt sources.                                    
+                                           
+* \Parameters (in) : ui32IntFlags is the bit mask of the interrupt sources to be enabled.                   
+* \Parameters (out): None                                                      
+* \Return value:   : none                                  
+*******************************************************************************/
 //! - \b TIMER_TIMB_TIMEOUT  - Timer B timeout interrupt
-//! - \b TIMER_RTC_MATCH  - RTC interrupt mask
-//! - \b TIMER_CAPA_EVENT  - Capture A event interrupt
-//! - \b TIMER_CAPA_MATCH  - Capture A match interrupt
 //! - \b TIMER_TIMA_TIMEOUT  - Timer A timeout interrupt
-//!
-//! \return None.
-//
-//*****************************************************************************
+
 void
 TimerIntEnable(uint32_t ui32Base, uint32_t ui32IntFlags)
 {

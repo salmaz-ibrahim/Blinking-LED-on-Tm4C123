@@ -50,6 +50,11 @@ extern "C"
 {
 #endif
 
+//INCLUDES 
+#include "stdbool.h"
+#include "stdint.h"
+
+
 //*****************************************************************************
 //
 // The following are values that can be passed to the

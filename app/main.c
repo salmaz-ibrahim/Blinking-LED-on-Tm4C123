@@ -1,89 +1,94 @@
 ////////*** INCLUDES *****/////////
 
 #include "C:\Users\MaNo\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h"
-#include "my_TM4C123GH6PM.h"
 #include "core_cm4.h"
-#include "timer.h"
+#include "my_gpio.h"
+#include "my_timer.h"
 #include "sysctl.h"
-#include "hw_timer.h"
 #include "macros.h"
+#include "my_interrupt.h"
+#include "C:\Users\MaNo\Documents\GitHub\Egyfwd\inc\hw_memmap.h"
 
 /////////////////////////////////////////////////
 
 ////////////DEFINE///////////////////////
-#define RCGCGPIO * ((unsigned int *) 0x400FE608)
 #define RCGCTIMER * ((unsigned int *) 0x400FE604)
-	
 
-#define GPIO_PORTF_CLK_EN  0x20
-#define GPIO_PORTF_PIN2_EN 0x04
-#define LED_ON2 	 				  0x04
+#define DELAY_VALUE							20000000
 
+extern void TIMER0_Handler(void);
 
-
-#define DELAY_VALUE							300
-
-
-/* First configure the timer interrupt of TM4C123 to generate an interrupt
- after delay value. Second, inside the interrupt service routine of the timer.
-*/
 
 int main(void)
 {
-			//
-		// Enable the Timer0 peripheral
+	SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF); /*Enable clock for Port F*/
+	//
+	// Wait for the GPIOA module to be ready.
+	//
+	while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOF))
+	{}
+	// enable GPIO pins as digital I/Os
+	GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE,GPIO_PIN_3 | GPIO_PIN_2 | GPIO_PIN_1);
+	// PIN_0 is normally locked.  Need to write a special passcode and commit it.
+		GPIO_PORTF_LOCK_R = GPIO_LOCK_KEY;
+		GPIO_PORTF_CR_R = 0x1;
+	
+	SysCtlClockSet(SYSCTL_SYSDIV_1 | SYSCTL_USE_OSC | SYSCTL_OSC_MAIN | SYSCTL_XTAL_16MHZ);
 
-	RCGCGPIO |= (1U<<5); /*Enable clock for Port F*/
-  RCGCTIMER |= (1U<<0); /*Enable clock for timer0*/
+
+  SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER0); /*Enable clock for timer0*/
+	while(!SysCtlPeripheralReady(SYSCTL_PERIPH_TIMER0))
+	{ }
 
 		//1. TimerDisable: 
 
-	TimerDisable((TIMER0_BASE),TIMER_A); // TIMER_O_TAR: GPTM Timer A Mode
+	TimerDisable((TIMER0_BASE),TIMER_A);
 
 	//2. Write the GPTM Configuration Register (GPTMCFG) with a value of 0x0000.0000 
 	
-	TimerConfigure((TIMER0_BASE),CLEAR); // Clear Configuration
+	TimerConfigure((TIMER0_BASE),0x00); // Clear Configuration
 
 	//3. Configure the TnMR field in the GPTM Timer n Mode Register (GPTMTnMR)
 	// also config TIMER_CFG_A_ACT_TOINTD as to mask the timeout interrupt of timer A.
-	
-	TimerConfigure((TIMER0_BASE),TIMER_CFG_PERIODIC); 
-	// Config: TIMER_CFG_ONE_SHOT_UP | TIMER_CFG_A_ACT_TOINTD
-	
-
+	//TIMER_CFG_32_BIT_TIMER
+	TimerConfigure(TIMER0_BASE, TIMER_CFG_PERIODIC);
 	//4. Load the start value into the GPTM Timer n Interval Load Register (GPTMTnILR).
 	
-	TimerLoadSet((TIMER0_BASE ),TIMER_A ,DELAY_VALUE); // Load value of timer to timer A 
+	TimerLoadSet(TIMER0_BASE,TIMER_A ,DELAY_VALUE); // Load value of timer to timer A 
+	 // Only mode available is 32bit periodic down-count
+
+    // Set CallBack for Timer0 Interrupt
+    //
+  TimerIntRegister(TIMER0_BASE , TIMER_A , TIMER0_Handler);
+	
 
 	//5. If interrupts are required, set the appropriate bits in the GPTM Interrupt Mask Register (GPTMIMR).
-	
-	TimerIntEnable((TIMER0_BASE),TIMER_TIMA_TIMEOUT); // Flags being TIMER_TIMA_TIMEOUT; i.e. timer a timeout interrupt 
+	IntEnable(INT_TIMER0A_TM4C123);
+	TimerIntEnable(TIMER0_BASE,TIMER_TIMA_TIMEOUT); // Flags being TIMER_TIMA_TIMEOUT; i.e. timer a timeout interrupt 
 
 	//6.  enable the timer and start counting.
-	 TimerEnable((TIMER0_BASE), TIMER_A); 
+	 TimerEnable(TIMER0_BASE,TIMER_A); 
 
 	/*7.In both cases,the status flags are cleared by writing a 1 to the appropriate bit
 	 of the GPTM Interrupt ClearRegister (GPTMICR). */
 
-	GPIO_PORTF_DIR_R       |= GPIO_PORTF_PIN2_EN ; //set GREEN pin as a digital output pin
-  GPIO_PORTF_DEN_R       |= GPIO_PORTF_PIN2_EN ;
 	
 									// Loop forever . 
 		while (1) 
 		{  
 			
-			GPIO_PORTF_DATA_R |= LED_ON2;
+			GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1 , GPIO_PIN_1); //Turn On LED 
 			
 	
 				
 		}
 }
 
-
-void TIMER0A_Handler(void){
-	if(TIMER_O_MIS& 0x1)
-				GPIO_PORTF_DATA_R &= (LED_ON2);
+void TIMER0_Handler(void){
+	 TimerIntClear(TIMER0_BASE, TIMER_TIMA_TIMEOUT | TIMER_TIMB_TIMEOUT);          /* Timer0 timeout flag bit clears*/
+	if(TIMER_O_MIS & 0x1){
+				GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1, 0x00); //Turn Off LED 
+	}
 				 
-      TimerIntClear(TIMER0_BASE, 0x1);          /* Timer0A timeout flag bit clears*/
+     
 }
-

@@ -1,0 +1,97 @@
+/**********************************************************************************************************************
+
+ *  FILE DESCRIPTION
+ *  -------------------------------------------------------------------------------------------------------------------
+ *         File:  my_gpio.h
+ * 
+ *
+ *  Description:  Defines and Macros for GPIO API.
+ *  
+ *********************************************************************************************************************/
+#ifndef 	MY_GPIO_H
+#define 	MY_GPIO_H
+
+/**********************************************************************************************************************
+ * INCLUDES
+ *********************************************************************************************************************/
+
+
+/**********************************************************************************************************************
+ *  GLOBAL CONSTANT MACROS
+ *********************************************************************************************************************/
+#define GPIO_PIN_0              0x00000001  // GPIO pin 0
+#define GPIO_PIN_1              0x00000002  // GPIO pin 1
+#define GPIO_PIN_2              0x00000004  // GPIO pin 2
+#define GPIO_PIN_3              0x00000008  // GPIO pin 3
+#define GPIO_PIN_4              0x00000010  // GPIO pin 4
+#define GPIO_PIN_5              0x00000020  // GPIO pin 5
+#define GPIO_PIN_6              0x00000040  // GPIO pin 6
+#define GPIO_PIN_7              0x00000080  // GPIO pin 7
+
+//*****************************************************************************
+//
+// Values that can be passed to GPIODirModeSet as the ui32PinIO parameter, and
+// returned from GPIODirModeGet.
+//
+//*****************************************************************************
+#define GPIO_DIR_MODE_IN        0x00000000  // Pin is a GPIO input
+#define GPIO_DIR_MODE_OUT       0x00000001  // Pin is a GPIO output
+#define GPIO_DIR_MODE_HW        0x00000002  // Pin is a peripheral function
+
+//*****************************************************************************
+//
+// Values that can be passed to GPIOPadConfigSet as the ui32Strength parameter,
+// and returned by GPIOPadConfigGet in the *pui32Strength parameter.
+//
+//*****************************************************************************
+#define GPIO_STRENGTH_2MA       0x00000001  // 2mA drive strength
+#define GPIO_STRENGTH_4MA       0x00000002  // 4mA drive strength
+#define GPIO_STRENGTH_6MA       0x00000065  // 6mA drive strength
+#define GPIO_STRENGTH_8MA       0x00000066  // 8mA drive strength
+#define GPIO_STRENGTH_8MA_SC    0x0000006E  // 8mA drive with slew rate control
+#define GPIO_STRENGTH_10MA      0x00000075  // 10mA drive strength
+#define GPIO_STRENGTH_12MA      0x00000077  // 12mA drive strength
+
+//*****************************************************************************
+//
+// Values that can be passed to GPIOPadConfigSet as the ui32PadType parameter,
+// and returned by GPIOPadConfigGet in the *pui32PadType parameter.
+//
+//*****************************************************************************
+#define GPIO_PIN_TYPE_STD       0x00000008  // Push-pull
+#define GPIO_PIN_TYPE_STD_WPU   0x0000000A  // Push-pull with weak pull-up
+#define GPIO_PIN_TYPE_STD_WPD   0x0000000C  // Push-pull with weak pull-down
+#define GPIO_PIN_TYPE_OD        0x00000009  // Open-drain
+#define GPIO_PIN_TYPE_ANALOG    0x00000000  // Analog comparator
+#define GPIO_PIN_TYPE_WAKE_HIGH 0x00000208  // Hibernate wake, high
+#define GPIO_PIN_TYPE_WAKE_LOW  0x00000108  // Hibernate wake, low
+
+
+
+/**********************************************************************************************************************
+ *  GLOBAL FUNCTION MACROS
+ *********************************************************************************************************************/
+
+
+/**********************************************************************************************************************
+ *  GLOBAL DATA TYPES AND STRUCTURES
+ *********************************************************************************************************************/
+
+
+/**********************************************************************************************************************
+ *  GLOBAL DATA PROTOTYPES
+ *********************************************************************************************************************/
+
+ 
+/**********************************************************************************************************************
+ *  GLOBAL FUNCTION PROTOTYPES
+ *********************************************************************************************************************/
+extern void GPIOPinTypeGPIOOutput(uint32_t ui32Port, uint8_t ui8Pins);
+extern void GPIODirModeSet(uint32_t ui32Port, uint8_t ui8Pins,uint32_t ui32PinIO);
+extern void GPIOPadConfigSet(uint32_t ui32Port, uint8_t ui8Pins, uint32_t ui32Strength, uint32_t ui32PadType);
+ 
+#endif  /* MY_GPIO.H */
+
+/**********************************************************************************************************************
+ *  END OF FILE: my_gpio.h
+ *********************************************************************************************************************/

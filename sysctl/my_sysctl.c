@@ -1,14 +1,15 @@
 #include <stdbool.h>
 #include <stdint.h>
-#include "hw_ints.h"
+#include <assert.h>
+#include "my_hw_ints.h"
 #include "hw_nvic.h"
 #include "hw_sysctl.h"
 #include "hw_types.h"
 #include "hw_flash.h"
-#include "cpu.h"
-#include "debug.h"
-#include "interrupt.h"
-#include "sysctl.h"
+//#include "cpu.h"
+//#include "debug.h"
+#include "my_interrupt.h"
+#include "my_sysctl.h"
 
 //**************************
 //*****************************************************************************
@@ -201,6 +202,10 @@ g_sXTALtoMEMTIM[] =
 void
 SysCtlPeripheralEnable(uint32_t ui32Peripheral)
 {
+	//
+    // Check the arguments.
+    //
+    ASSERT(_SysCtlPeripheralValid(ui32Peripheral));
    
     //
     // Enable this peripheral.
@@ -224,7 +229,11 @@ SysCtlPeripheralEnable(uint32_t ui32Peripheral)
 bool
 SysCtlPeripheralReady(uint32_t ui32Peripheral)
 {
-    
+    //
+    // Check the arguments.
+    //
+    ASSERT(_SysCtlPeripheralValid(ui32Peripheral));
+
     //
     // See if this peripheral is ready.
     //

@@ -89,7 +89,7 @@
             <nStopA1X>0</nStopA1X>
             <nStopA2X>0</nStopA2X>
           </AfterMake>
-          <SelectedForBatchBuild>0</SelectedForBatchBuild>
+          <SelectedForBatchBuild>1</SelectedForBatchBuild>
           <SVCSIdString></SVCSIdString>
         </TargetCommonOption>
         <CommonProperty>
@@ -314,7 +314,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>1</Optim>
+            <Optim>0</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -329,7 +329,7 @@
             <uC99>1</uC99>
             <uGnu>1</uGnu>
             <useXO>0</useXO>
-            <v6Lang>3</v6Lang>
+            <v6Lang>0</v6Lang>
             <v6LangP>1</v6LangP>
             <vShortEn>1</vShortEn>
             <vShortWch>1</vShortWch>
@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>..\nvic;..\inc;..\timer\timer;..\sysctl;..\driverlib;..\common</IncludePath>
+              <IncludePath>..\nvic;..\inc;..\timer\timer;..\common;..\gpio;..\interrupt;..\driverlib\driverlib;..\driverlib\inc;..\sysctl</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -385,9 +385,9 @@
           <GroupName>app</GroupName>
           <Files>
             <File>
-              <FileName>main.c</FileName>
+              <FileName>main_2.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\main.c</FilePath>
+              <FilePath>.\main_2.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -399,25 +399,60 @@
               <FileType>1</FileType>
               <FilePath>..\nvic\nvic.c</FilePath>
             </File>
+            <File>
+              <FileName>cpu.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\driverlib\driverlib\cpu.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>timer</GroupName>
           <Files>
             <File>
-              <FileName>timer.c</FileName>
+              <FileName>my_timer.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\timer\timer.c</FilePath>
+              <FilePath>..\timer\my_timer.c</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>sysctl</GroupName>
+          <GroupName>GPIO</GroupName>
+          <Files>
+            <File>
+              <FileName>my_gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\gpio\my_gpio.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>intr</GroupName>
+          <Files>
+            <File>
+              <FileName>my_interrupt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\interrupt\my_interrupt.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>my_sysctl</GroupName>
           <Files>
             <File>
               <FileName>my_sysctl.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\sysctl\my_sysctl.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>pwm</GroupName>
+          <Files>
+            <File>
+              <FileName>pwm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\driverlib\driverlib\pwm.c</FilePath>
             </File>
           </Files>
         </Group>
