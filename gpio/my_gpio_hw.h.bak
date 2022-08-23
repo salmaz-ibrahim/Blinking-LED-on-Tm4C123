@@ -8,6 +8,7 @@
  *  Description:  Defines and Macros for GPIO hardware. 
  *  
  *********************************************************************************************************************/
+ #include <stdint.h>
 #ifndef 	MY_GPIO_HW_H
 #define 	MY_GPIO_HW_H
 
@@ -87,32 +88,17 @@
 #define GPIO_PIN_TYPE_WAKE_HIGH 0x00000208  // Hibernate wake, high
 #define GPIO_PIN_TYPE_WAKE_LOW  0x00000108  // Hibernate wake, low
 
+// The following are defines for the bit fields in the GPIO_O_LOCK register.
+//
+#define GPIO_LOCK_M             0xFFFFFFFF  // GPIO Lock
+#define GPIO_LOCK_UNLOCKED      0x00000000  // The GPIOCR register is unlocked
+                                            // and may be modified
+#define GPIO_LOCK_LOCKED        0x00000001  // The GPIOCR register is locked
+                                            // and may not be modified
+#define GPIO_LOCK_KEY           0x4C4F434B  // Unlocks the GPIO_CR register
 
-
-/**********************************************************************************************************************
- *  GLOBAL FUNCTION MACROS
- *********************************************************************************************************************/
-
-
-/**********************************************************************************************************************
- *  GLOBAL DATA TYPES AND STRUCTURES
- *********************************************************************************************************************/
-
-
-/**********************************************************************************************************************
- *  GLOBAL DATA PROTOTYPES
- *********************************************************************************************************************/
-
- 
-/**********************************************************************************************************************
- *  GLOBAL FUNCTION PROTOTYPES
- *********************************************************************************************************************/
-extern void GPIOPinTypeGPIOOutput(uint32_t ui32Port, uint8_t ui8Pins);
-extern void GPIODirModeSet(uint32_t ui32Port, uint8_t ui8Pins,uint32_t ui32PinIO);
-extern void GPIOPadConfigSet(uint32_t ui32Port, uint8_t ui8Pins, uint32_t ui32Strength, uint32_t ui32PadType);
- 
-#endif  /* MY_GPIO.H */
+#endif  /* MY_GPIO_HW.H */
 
 /**********************************************************************************************************************
- *  END OF FILE: my_gpio.h
+ *  END OF FILE: my_gpio_hw.h
  *********************************************************************************************************************/

@@ -39,20 +39,7 @@ static const uint32_t g_ppui32TimerIntMap[][2] =
 static const uint_fast8_t g_ui8TimerIntMapRows =
     sizeof(g_ppui32TimerIntMap) / sizeof(g_ppui32TimerIntMap[0]);
 
-static const uint32_t g_ppui32TimerIntMapSnowflake[][2] =
-{
-    { TIMER0_BASE, INT_TIMER0A_TM4C129 },
-    { TIMER1_BASE, INT_TIMER1A_TM4C129 },
-    { TIMER2_BASE, INT_TIMER2A_TM4C129 },
-    { TIMER3_BASE, INT_TIMER3A_TM4C129 },
-    { TIMER4_BASE, INT_TIMER4A_TM4C129 },
-    { TIMER5_BASE, INT_TIMER5A_TM4C129 },
-    { TIMER6_BASE, INT_TIMER6A_TM4C129 },
-    { TIMER7_BASE, INT_TIMER7A_TM4C129 },
-};
-static const uint_fast8_t g_ui8TimerIntMapRowsSnowflake =
-    sizeof(g_ppui32TimerIntMapSnowflake) /
-    sizeof(g_ppui32TimerIntMapSnowflake[0]);
+
 /**********************************************************************************************************************
  *  LOCAL FUNCTION PROTOTYPES
  *********************************************************************************************************************/
@@ -88,12 +75,6 @@ _TimerIntNumberGet(uint32_t ui32Base, uint32_t ui32Timer)
     //
     ppui32SSIIntMap = g_ppui32TimerIntMap;
     ui8Rows = g_ui8TimerIntMapRows;
-
-    if(CLASS_IS_TM4C129)
-    {
-        ppui32SSIIntMap = g_ppui32TimerIntMapSnowflake;
-        ui8Rows = g_ui8TimerIntMapRowsSnowflake;
-    }
 
     //
     // Loop through the table that maps timer base addresses to interrupt
@@ -206,9 +187,16 @@ TimerConfigure(uint32_t ui32Base, uint32_t ui32Config)
     // Set the global timer configuration.
     //
     HWREG(ui32Base + TIMER_O_CFG) = ui32Config >> 24;
-		TIMER1->CFG = 0x00;
-		TIMER1->TAMR = 0x02;
-
+		if(ui32Base == TIMER1_BASE){
+			TIMER1->CFG = 0x00;
+			TIMER1->TAMR = 0x02;
+			TIMER1->TBMR = 0x02;
+		}
+		if(ui32Base == TIMER0_BASE){
+			TIMER0->CFG = 0x00;
+			TIMER0->TAMR = 0x02;
+			TIMER0->TBMR = 0x02;
+		}
     //
     // Set the configuration of the A and B timers and set the TxPWMIE bit.
     // Note that the B timer configuration is ignored by the hardware in 32-bit
@@ -309,7 +297,7 @@ TimerIntEnable(uint32_t ui32Base, uint32_t ui32IntFlags)
     HWREG(ui32Base + TIMER_O_IMR) |= ui32IntFlags;
 }
 /******************************************************************************
-* \Syntax          : TimerIntEnable(uint32_t ui32Base, uint32_t ui32IntFlags)      
+* \Syntax          : TimerIntClear(uint32_t ui32Base, uint32_t ui32IntFlags)      
 * \Description     : Clears timer interrupt sources.                                   
                                            
 * \Parameters (in) : ui32IntFlags is the bit mask of the interrupt sources to be enabled.                   
@@ -369,6 +357,7 @@ TimerIntRegister(uint32_t ui32Base, uint32_t ui32Timer,
     //
     IntEnable(ui32Int);
 }
+
 
 
 /**********************************************************************************************************************

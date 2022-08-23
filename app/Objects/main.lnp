@@ -1,5 +1,5 @@
 --cpu=Cortex-M4.fp.sp
-".\objects\main_2.o"
+".\objects\main_3.o"
 ".\objects\nvic.o"
 ".\objects\cpu.o"
 ".\objects\my_timer.o"

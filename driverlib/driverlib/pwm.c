@@ -46,13 +46,14 @@
 
 #include <stdbool.h>
 #include <stdint.h>
-#include "hw_ints.h"
+#include <assert.h>
+#include "my_hw_ints.h"
 #include "hw_memmap.h"
 #include "hw_pwm.h"
 #include "hw_sysctl.h"
 #include "hw_types.h"
 #include "debug.h"
-#include "interrupt.h"
+#include "my_interrupt.h"
 #include "pwm.h"
 
 //*****************************************************************************

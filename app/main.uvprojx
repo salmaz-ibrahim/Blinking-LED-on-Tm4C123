@@ -385,9 +385,9 @@
           <GroupName>app</GroupName>
           <Files>
             <File>
-              <FileName>main_2.c</FileName>
+              <FileName>main_3.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\main_2.c</FilePath>
+              <FilePath>.\main_3.c</FilePath>
             </File>
           </Files>
         </Group>

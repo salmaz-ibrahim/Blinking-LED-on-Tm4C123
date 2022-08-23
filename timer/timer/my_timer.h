@@ -22,8 +22,8 @@
 #include "timer_types.h"
 #include "hw_timer.h"
 #include "hw_sysctl.h"
-#include "hw_ints.h"
-#include "interrupt.h"
+#include "my_hw_ints.h"
+#include "my_interrupt.h"
 /**********************************************************************************************************************
  *  GLOBAL CONSTANT MACROS
  *********************************************************************************************************************/
@@ -70,6 +70,7 @@ Values that can be passed to most of the timer APIs as the ui32Timer
 #define TIMER_CLOCK_SYSTEM      0x00000000
 #define TIMER_CLOCK_PIOSC       0x00000001
  
+
  
  //*****************************************************************************
 //
@@ -96,6 +97,7 @@ extern void TimerIntEnable(uint32_t ui32Base, uint32_t ui32IntFlags);
 extern void TimerPrescaleSet(uint32_t ui32Base, uint32_t ui32Timer,uint32_t ui32Value);
 extern void TimerLoadSet(uint32_t ui32Base, uint32_t ui32Timer, uint32_t ui32Value);
 extern void TimerIntRegister(uint32_t ui32Base, uint32_t ui32Timer,void (*pfnHandler)(void));
+
  
 #endif  /* MY_TIMER_H */
 

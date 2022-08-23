@@ -128,5 +128,21 @@
 #define INT_PWM1_FAULT_TM4C123  154         // PWM1 Fault
 #define NUM_INTERRUPTS_TM4C123  155
 
+
+//*****************************************************************************
+//
+// The following are defines for the fault assignments.
+//
+//*****************************************************************************
+#define FAULT_NMI               2           // NMI fault
+#define FAULT_HARD              3           // Hard fault
+#define FAULT_MPU               4           // MPU fault
+#define FAULT_BUS               5           // Bus fault
+#define FAULT_USAGE             6           // Usage fault
+#define FAULT_SVCALL            11          // SVCall
+#define FAULT_DEBUG             12          // Debug monitor
+#define FAULT_PENDSV            14          // PendSV
+#define FAULT_SYSTICK           15          // System Tick
+
 #endif
 

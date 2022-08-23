@@ -87,7 +87,7 @@ int main(void)
 		{  
 			PWMPulseWidthSet(PWM1_BASE, PWM_OUT_5, 300);
 			PWMPulseWidthSet(PWM1_BASE, PWM_OUT_6,300);
-			PWMPulseWidthSet(PWM1_BASE, PWM_OUT_7,300);
+      PWMPulseWidthSet(PWM1_BASE, PWM_OUT_7,300);
 		}
 }
 
@@ -96,7 +96,7 @@ void TIMER1IntHandler(void){
 	
 			PWMPulseWidthSet(PWM1_BASE, PWM_OUT_5, 100);
 			PWMPulseWidthSet(PWM1_BASE, PWM_OUT_6,100);
-			PWMPulseWidthSet(PWM1_BASE, PWM_OUT_7,100);
+      PWMPulseWidthSet(PWM1_BASE, PWM_OUT_7,100);
 	
 			TimerIntClear(TIMER1_BASE, TIMER_TIMA_TIMEOUT);	/* TIMER1 timeout flag bit clears*/ 
 }

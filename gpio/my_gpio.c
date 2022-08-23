@@ -8,12 +8,7 @@
 /**********************************************************************************************************************
  *  INCLUDES
  *********************************************************************************************************************/
-
 #include "my_gpio.h"
-
-/**********************************************************************************************************************
-*  LOCAL MACROS CONSTANT\FUNCTION
-*********************************************************************************************************************/
 
 /**********************************************************************************************************************
  *  LOCAL DATA 
@@ -43,20 +38,9 @@ static const uint32_t g_pui32GPIOBaseAddrs[] =
     GPIO_PORTS_BASE, GPIO_PORTS_BASE,
     GPIO_PORTT_BASE, GPIO_PORTT_BASE,
 };
-/**********************************************************************************************************************
- *  GLOBAL DATA
- *********************************************************************************************************************/
-
-/**********************************************************************************************************************
- *  LOCAL FUNCTION PROTOTYPES
- *********************************************************************************************************************/
 
 /**********************************************************************************************************************
  *  LOCAL FUNCTIONS
- *********************************************************************************************************************/
-
-/**********************************************************************************************************************
- *  GLOBAL FUNCTIONS
  *********************************************************************************************************************/
 /******************************************************************************
 * \Syntax          : GPIODirModeSet(uint32_t ui32Port, uint8_t ui8Pins, uint32_t ui32PinIO)   
@@ -89,7 +73,9 @@ GPIODirModeSet(uint32_t ui32Port, uint8_t ui8Pins, uint32_t ui32PinIO)
                                       (HWREG(ui32Port + GPIO_O_AFSEL) &
                                        ~(ui8Pins)));
 }
-
+/**********************************************************************************************************************
+ *  GLOBAL FUNCTIONS
+ *********************************************************************************************************************/
 /******************************************************************************
 * \Syntax          : GPIOPinTypeGPIOOutput(uint32_t ui32Port, uint8_t ui8Pins)        
 * \Description     : Configures pin(s) for use as GPIO outputs.                                    
@@ -130,9 +116,9 @@ GPIOPinTypeGPIOOutput(uint32_t ui32Port, uint8_t ui8Pins)
 *******************************************************************************/
 void
 GPIOPinConfigure(uint32_t ui32PinConfig)
-{
-    uint32_t ui32Base, ui32Shift;
+{uint32_t ui32Base, ui32Shift;
 
+   
     //
     // Extract the base address index from the input value.
     //
@@ -164,7 +150,6 @@ GPIOPinConfigure(uint32_t ui32PinConfig)
                                      ((ui32PinConfig & 0xf) << ui32Shift));
 }
 
-
 /******************************************************************************
 * \Syntax          : GPIOPinWrite(uint32_t ui32Port, uint8_t ui8Pins, uint8_t ui8Val)      
 * \Description     : Writes a value to the specified pin(s).                                    
@@ -187,38 +172,14 @@ GPIOPinWrite(uint32_t ui32Port, uint8_t ui8Pins, uint8_t ui8Val)
 }
 
 
-//*****************************************************************************
-//
-//! Configures pin(s) for use by the PWM peripheral.
-//!
-//! \param ui32Port is the base address of the GPIO port.
-//! \param ui8Pins is the bit-packed representation of the pin(s).
-//!
-//! The PWM pins must be properly configured for the PWM peripheral to function
-//! correctly.  This function provides a typical configuration for those
-//! pin(s); other configurations may work as well depending upon the board
-//! setup (for example, using the on-chip pull-ups).
-//!
-//! The pin(s) are specified using a bit-packed byte, where each bit that is
-//! set identifies the pin to be accessed, and where bit 0 of the byte
-//! represents GPIO port pin 0, bit 1 represents GPIO port pin 1, and so on.
-//!
-//! \note This function cannot be used to turn any pin into a PWM pin; it only
-//! configures a PWM pin for proper operation.  Note that a GPIOPinConfigure()
-//! function call is also required to properly configure a pin for the PWM
-//! function.
-//!
-//! \note A subset of GPIO pins on Tiva devices, notably those used by the
-//! JTAG/SWD interface and any pin capable of acting as an NMI input, are
-//! locked against inadvertent reconfiguration.  These pins must be unlocked
-//! using direct register writes to the relevant GPIO_O_LOCK and GPIO_O_CR
-//! registers before this function can be called.  Please see the ``gpio_jtag''
-//! example application for the mechanism required and consult your part
-//! datasheet for information on affected pins.
-//!
-//! \return None.
-//
-//*****************************************************************************
+/*****************************************************************************
+* \Syntax          : GPIOPinTypePWM(uint32_t ui32Port, uint8_t ui8Pins)      
+* \Description     : Configures pin(s) for use by the PWM peripheral.                                                                                                                                                            
+* \Parameters (in) :	\param ui32Port is the base address of the GPIO port.
+											\param ui8Pins is the bit-packed representation of the pin(s).                 
+* \Parameters (out): None 
+
+*****************************************************************************/
 void
 GPIOPinTypePWM(uint32_t ui32Port, uint8_t ui8Pins)
 {
@@ -235,17 +196,16 @@ GPIOPinTypePWM(uint32_t ui32Port, uint8_t ui8Pins)
 
 
 /*****************************************************************************
-//
-//! Sets the pad configuration for the specified pin(s).
+* \Syntax          :GPIOPadConfigSet(uint32_t ui32Port, uint8_t ui8Pins,
+                 uint32_t ui32Strength, uint32_t ui32PinType)
+* \Description     :Sets the pad configuration for the specified pin(s).
 //!
-//! \param ui32Port is the base address of the GPIO port.
-//! \param ui8Pins is the bit-packed representation of the pin(s).
-//! \param ui32Strength specifies the output drive strength.
-//! \param ui32PinType specifies the pin type.
-//!
-//! This function sets the drive strength and type for the specified pin(s)
-//! on the selected GPIO port.
-//*/
+* \Parameters (in) : \param ui32Port is the base address of the GPIO port.
+											\param ui8Pins is the bit-packed representation of the pin(s).
+											\param ui32Strength specifies the output drive strength.
+											\param ui32PinType specifies the pin type.
+* \Parameters (out): None
+******************************************************************************/
 void
 GPIOPadConfigSet(uint32_t ui32Port, uint8_t ui8Pins,
                  uint32_t ui32Strength, uint32_t ui32PinType)

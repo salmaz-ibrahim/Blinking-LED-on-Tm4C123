@@ -9,7 +9,7 @@
 //#include "cpu.h"
 //#include "debug.h"
 #include "my_interrupt.h"
-#include "my_sysctl.h"
+#include "sysctl.h"
 
 //**************************
 //*****************************************************************************
@@ -239,4 +239,53 @@ SysCtlPeripheralReady(uint32_t ui32Peripheral)
     //
     return(HWREGBITW(SYSCTL_PRBASE + ((ui32Peripheral & 0xff00) >> 8),
                      ui32Peripheral & 0xff));
+}
+//*****************************************************************************
+//
+//! Sets the PWM clock configuration.
+//!
+//! \param ui32Config is the configuration for the PWM clock; it must be one of
+//! \b SYSCTL_PWMDIV_1, \b SYSCTL_PWMDIV_2, \b SYSCTL_PWMDIV_4,
+//! \b SYSCTL_PWMDIV_8, \b SYSCTL_PWMDIV_16, \b SYSCTL_PWMDIV_32, or
+//! \b SYSCTL_PWMDIV_64.
+//!
+//! This function configures the rate of the clock provided to the PWM module
+//! as a ratio of the processor clock.  This clock is used by the PWM module to
+//! generate PWM signals; its rate forms the basis for all PWM signals.
+//!
+//! \note This function should only be used with TM4C123 devices.  For
+//! other TM4C devices, the PWMClockSet() function should be used.
+//!
+//! \note The clocking of the PWM is dependent on the system clock rate as
+//! configured by SysCtlClockSet().
+//!
+//! \return None.
+//
+//*****************************************************************************
+void
+SysCtlPWMClockSet(uint32_t ui32Config)
+{
+    //
+    // Check the arguments.
+    //
+    ASSERT((ui32Config == SYSCTL_PWMDIV_1) ||
+           (ui32Config == SYSCTL_PWMDIV_2) ||
+           (ui32Config == SYSCTL_PWMDIV_4) ||
+           (ui32Config == SYSCTL_PWMDIV_8) ||
+           (ui32Config == SYSCTL_PWMDIV_16) ||
+           (ui32Config == SYSCTL_PWMDIV_32) ||
+           (ui32Config == SYSCTL_PWMDIV_64));
+
+    //
+    // Check that there is a PWM block on this part.
+    //
+    ASSERT(HWREG(SYSCTL_DC1) & (SYSCTL_DC1_PWM0 | SYSCTL_DC1_PWM1));
+
+    //
+    // Set the PWM clock configuration into the run-mode clock configuration
+    // register.
+    //
+    HWREG(SYSCTL_RCC) = ((HWREG(SYSCTL_RCC) &
+                          ~(SYSCTL_RCC_USEPWMDIV | SYSCTL_RCC_PWMDIV_M)) |
+                         ui32Config);
 }

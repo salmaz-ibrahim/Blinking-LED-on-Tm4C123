@@ -5,4 +5,4 @@
   ..\interrupt\my_hw_ints.h ..\inc\hw_nvic.h ..\inc\hw_sysctl.h \
   ..\inc\hw_types.h ..\inc\hw_flash.h ..\interrupt\my_interrupt.h \
   ..\driverlib\driverlib\debug.h ..\driverlib\driverlib\cpu.h \
-  ..\sysctl\my_sysctl.h
+  ..\sysctl\sysctl.h

@@ -13,6 +13,99 @@
  *  INCLUDES
  *********************************************************************************************************************/
 #include "my_timer.h"
+#include "TM4C123.h"
+/**********************************************************************************************************************
+ *  LOCAL FUNCTION  
+ *********************************************************************************************************************/
+
+//*****************************************************************************
+// A mapping of timer base address to interrupt number.
+//*****************************************************************************
+static const uint32_t g_ppui32TimerIntMap[][2] =
+{
+    { TIMER0_BASE, INT_TIMER0A_TM4C123 },
+    { TIMER1_BASE, INT_TIMER1A_TM4C123 },
+    { TIMER2_BASE, INT_TIMER2A_TM4C123 },
+    { TIMER3_BASE, INT_TIMER3A_TM4C123 },
+    { TIMER4_BASE, INT_TIMER4A_TM4C123 },
+    { TIMER5_BASE, INT_TIMER5A_TM4C123 },
+    { WTIMER0_BASE, INT_WTIMER0A_TM4C123 },
+    { WTIMER1_BASE, INT_WTIMER1A_TM4C123 },
+    { WTIMER2_BASE, INT_WTIMER2A_TM4C123 },
+    { WTIMER3_BASE, INT_WTIMER3A_TM4C123 },
+    { WTIMER4_BASE, INT_WTIMER4A_TM4C123 },
+    { WTIMER5_BASE, INT_WTIMER5A_TM4C123 },
+};
+static const uint_fast8_t g_ui8TimerIntMapRows =
+    sizeof(g_ppui32TimerIntMap) / sizeof(g_ppui32TimerIntMap[0]);
+
+
+/**********************************************************************************************************************
+ *  LOCAL FUNCTION PROTOTYPES
+ *********************************************************************************************************************/
+static uint32_t _TimerIntNumberGet(uint32_t ui32Base, uint32_t ui32Timer);
+/**********************************************************************************************************************
+ *  LOCAL FUNCTIONS
+ *********************************************************************************************************************/
+		
+//*****************************************************************************
+//
+//! Returns a timer modules interrupt number.
+//!
+//! \param ui32Base is the base address of the selected timer.
+//! \param ui32Timer specifies the timer(s) to enable; must be one of
+//! \b TIMER_A, \b TIMER_B, or \b TIMER_BOTH.
+//!
+//! This function returns the interrupt number for a given timer module
+//! specified by the \e ui32Base and \e ui32Timer parameter.
+//!
+//! \return Returns a timer module's interrupt number or 0 if the interrupt
+//! does not exist.
+//
+//*****************************************************************************
+static uint32_t
+_TimerIntNumberGet(uint32_t ui32Base, uint32_t ui32Timer)
+{
+    uint32_t ui32Int;
+    uint_fast8_t ui8Idx, ui8Rows;
+    const uint32_t (*ppui32SSIIntMap)[2];
+
+    //
+    // Default interrupt map.
+    //
+    ppui32SSIIntMap = g_ppui32TimerIntMap;
+    ui8Rows = g_ui8TimerIntMapRows;
+
+    //
+    // Loop through the table that maps timer base addresses to interrupt
+    // numbers.
+    //
+    for(ui8Idx = 0; ui8Idx < ui8Rows; ui8Idx++)
+    {
+        //
+        // See if this base address matches.
+        //
+        if(ppui32SSIIntMap[ui8Idx][0] == ui32Base)
+        {
+            ui32Int = ppui32SSIIntMap[ui8Idx][1];
+
+            if(ui32Timer == TIMER_B)
+            {
+                ui32Int += 1;
+            }
+
+            //
+            // Return the corresponding interrupt number.
+            //
+            return(ui32Int);
+        }
+    }
+
+    //
+    // The base address could not be found, so return an error.
+    //
+    return(0);
+}
 
 /**********************************************************************************************************************
  *  GLOBAL FUNCTIONS
@@ -94,13 +187,22 @@ TimerConfigure(uint32_t ui32Base, uint32_t ui32Config)
     // Set the global timer configuration.
     //
     HWREG(ui32Base + TIMER_O_CFG) = ui32Config >> 24;
-
+		if(ui32Base == TIMER1_BASE){
+			TIMER1->CFG = 0x00;
+			TIMER1->TAMR = 0x02;
+			TIMER1->TBMR = 0x02;
+		}
+		if(ui32Base == TIMER0_BASE){
+			TIMER0->CFG = 0x00;
+			TIMER0->TAMR = 0x02;
+			TIMER0->TBMR = 0x02;
+		}
     //
     // Set the configuration of the A and B timers and set the TxPWMIE bit.
     // Note that the B timer configuration is ignored by the hardware in 32-bit
     // modes.
     //
-    if(NEW_TIMER_CONFIGURATION)
+    /*if(NEW_TIMER_CONFIGURATION)
     {
         HWREG(ui32Base + TIMER_O_TAMR) = (((ui32Config & 0x000f0000) >> 4) |
                                           (ui32Config & 0xff) |
@@ -115,7 +217,7 @@ TimerConfigure(uint32_t ui32Base, uint32_t ui32Config)
                                           TIMER_TAMR_TAPWMIE);
         HWREG(ui32Base + TIMER_O_TBMR) = (((ui32Config >> 8) & 0xff) |
                                           TIMER_TBMR_TBPWMIE);
-    }
+    }*/
 }
 /******************************************************************************
 * \Syntax          : TimerPrescaleSet(uint32_t ui32Base, uint32_t ui32Timer, uint32_t ui32Value)        
@@ -239,11 +341,11 @@ TimerIntRegister(uint32_t ui32Base, uint32_t ui32Timer,
 {
     uint32_t ui32Int;
 
+    //
     // Get the interrupt number for this timer module.
     //
     ui32Int = _TimerIntNumberGet(ui32Base, ui32Timer);
 
-    ASSERT(ui32Int != 0);
 
     //
     // Register the interrupt handler.
@@ -255,6 +357,8 @@ TimerIntRegister(uint32_t ui32Base, uint32_t ui32Timer,
     //
     IntEnable(ui32Int);
 }
+
+
 
 /**********************************************************************************************************************
  *  END OF FILE: my_timer.c
